@@ -1,0 +1,31 @@
+<h1>Employee page</h1>
+<div class="container">
+  
+  <form (ngSubmit)="!employeeForm.invalid && saveEmployee()" #employeeForm="ngForm">
+    <div class="alert alert-warning" *ngIf="employeeForm.dirty && name.invalid">Enter a Name</div>
+    <fieldset class="form-group">
+      <label>Name</label>
+      <input #name="ngModel" type="text" class="form-control" name="name" required="required" [(ngModel)]="employee.name">
+    </fieldset>
+    
+    <div class="alert alert-warning" *ngIf="employeeForm.dirty && surname.invalid">Enter a Surname</div>
+    <fieldset class="form-group">
+      <label>Surname</label>
+      <input #surname="ngModel" type="text" class="form-control" name="surname" required="required" [(ngModel)]="employee.surname">
+    </fieldset>
+
+    <div class="alert alert-warning" *ngIf="employeeForm.dirty && surname.invalid">Enter a Company</div>
+    <fieldset class="form-group">
+      <label>Company</label>
+      <input #company="ngModel" type="text" class="form-control" name="company" required="required" [(ngModel)]="employee.company">
+    </fieldset>
+
+    <div class="alert alert-warning" *ngIf="employeeForm.dirty && surname.invalid">Enter a Salary</div>
+    <fieldset class="form-group">
+      <label>Salary</label>
+      <input #salary="ngModel" type="text" class="form-control" name="salary" required="required" [(ngModel)]="employee.salary">
+    </fieldset>
+
+    <button type="submit" class="btn btn-success float-right">Save</button>
+  </form>
+</div>

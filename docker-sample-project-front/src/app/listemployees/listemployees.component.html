@@ -1,0 +1,31 @@
+<h1 class="pt-1"> My Employees </h1>
+
+<div class="alert alert-success" *ngIf='message'>{{message}}</div>
+
+<div class="container pt-2">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Company</th>
+        <th>Salary</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{employee.name}}</td>
+        <td>{{employee.surname}}</td>
+        <td>{{employee.company}}</td>
+        <td>{{employee.salary}}</td>
+        <td><button (click)="updateEmployee(employee.id)" class="btn btn-success">Update</button></td>
+        <td><button (click)="deleteEmployee(employee.id)" class="btn btn-warning">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class ="col-xs-12 pt-4 pr-4">
+    <button (click)="addEmployee()" class ="btn btn-success float-right">Add New Employee</button>
+</div>
