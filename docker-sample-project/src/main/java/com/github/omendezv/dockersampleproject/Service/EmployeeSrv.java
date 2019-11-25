@@ -10,4 +10,6 @@ public interface EmployeeSrv {
     EmployeeDTO findEmployeeById(Long id);
     List<EmployeeDTO> findAllEmployees();
     void createEmployee(Employee employee);
+    void deleteEmployee(Long id);
+    void updateEmployee(Employee employee);
 }

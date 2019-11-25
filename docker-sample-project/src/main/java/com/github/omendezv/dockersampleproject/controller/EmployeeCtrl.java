@@ -35,4 +35,18 @@ public class EmployeeCtrl {
                 .map(EmployeeDTO::convertToEntity)
                 .orElseThrow(() ->new RuntimeException("Invalid employee")));
     }
+
+    @DeleteMapping(path = "/{id}")
+    @CrossOrigin
+    public void deleteEmployee(@PathVariable Long id) {
+        employeeSrv.deleteEmployee(id);
+    }
+
+    @PutMapping(path = "/{id}")
+    @CrossOrigin
+    public void updateEmployee(@RequestBody EmployeeDTO employeeDTO) {
+        employeeSrv.updateEmployee(Optional.ofNullable(employeeDTO)
+                .map(EmployeeDTO::convertToEntity)
+                .orElseThrow(() ->new RuntimeException("Invalid employee")));
+    }
 }

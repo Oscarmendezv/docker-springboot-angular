@@ -29,4 +29,14 @@ public class EmployeeSrvImpl implements EmployeeSrv {
     public void createEmployee(Employee employee) {
         employeeRepository.save(employee);
     }
+
+    @Override
+    public void deleteEmployee(Long id) {
+        employeeRepository.deleteById(id);
+    }
+
+    @Override
+    public void updateEmployee(Employee employee) {
+        employeeRepository.save(employee);
+    }
 }

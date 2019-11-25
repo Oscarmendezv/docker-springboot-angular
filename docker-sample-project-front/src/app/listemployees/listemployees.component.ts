@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 export class Employee {
   constructor(
-    public id: number,
+    public employeeId: number,
     public name: string,
     public surname: string,
     public company: string,

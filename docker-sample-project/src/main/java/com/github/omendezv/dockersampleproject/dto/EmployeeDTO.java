@@ -4,7 +4,6 @@ import com.github.omendezv.dockersampleproject.model.entities.Employee;
 
 public class EmployeeDTO {
     private Long employeeId;
-
     private String name;
     private String surname;
     private Long salary;
