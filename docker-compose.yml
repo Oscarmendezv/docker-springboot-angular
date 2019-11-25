@@ -1,0 +1,53 @@
+version : '3.3'
+
+services:
+    database:
+        image: mysql
+        container_name: database
+        volumes:
+            - dockerAngularSpringDatabase:/var/lib/mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: dockerAngularSpringDatabase
+            MYSQL_USER: user
+            MYSQL_PASSWORD: password
+        ports:
+            - 3306:3306
+        networks:
+            - backendNetwork
+            
+    springapi:
+        depends_on:
+            - database
+        container_name: springapi
+        image: openjdk:8-jdk-alpine
+        ports:
+            - 8080:8080
+        restart: always
+        volumes:
+            - ./docker-sample-project/target/docker-sample-project-0.0.1-SNAPSHOT.jar:/application.jar
+        command: ["java", "-jar", "application.jar"]
+        networks:
+            - backendNetwork
+            - frontendNetwork
+            
+    angular:
+        image: nginx:alpine
+        container_name: angular
+        ports:
+            - 4200:80
+        depends_on:
+            - springapi
+        volumes:
+            - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+            - ./docker-sample-project-front/dist/docker-sample-project-front/:/usr/share/nginx/html
+        networks:
+            - frontendNetwork
+    
+volumes:
+    dockerAngularSpringDatabase:
+    
+networks:
+    backendNetwork:
+    frontendNetwork:
